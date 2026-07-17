@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RA Studio — Digital Growth Systems for Manufacturing Businesses</title>
+<meta name="description" content="RA Studio helps manufacturers improve online visibility, buyer trust, enquiry generation, CRM follow-up and automation through structured digital growth systems.">
+<meta name="theme-color" content="#080b1a">
+<meta property="og:title" content="RA Studio — Digital Growth Systems for Manufacturing Businesses">
+<meta property="og:description" content="RA Studio helps manufacturers improve online visibility, buyer trust, enquiry generation, CRM follow-up and automation through structured digital growth systems.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   0. DESIGN TOKENS
+   ============================================================ */
+:root {
+  /* Main Background */
+  --void: #080B1A;
+  /* Section Background */
+  --panel: #0F1430;
+  /* Cards and Elevated Surfaces */
+  --panel-2: #131A3A;
+  /* Borders and Dividers */
+  --line: #232A52;
+  /* Primary Violet */
+  --violet: #8B5CF6;
+  /* Hover Violet */
+  --violet-2: #A78BFA;
+  /* Light Accent Violet */
+  --violet-light: #C4B5FD;
+  /* Main Heading Color */
+  --white: #F5F5F7;
+  /* Paragraph Color */
+  --muted: #7D84A6;
+  /* Metadata and Quiet Text */
+  --muted-2: #565D82;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --container: 1180px;
+  --gutter: 32px;
+  --section-space: 110px;
+  --radius-control: 10px;
+  --radius-card: 14px;
+  --radius-pill: 999px;
+  --transition-fast: 250ms ease;
+  --transition-base: 350ms ease;
+}
+
+/* ============================================================
+   1. RESET & FOUNDATION
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--void);
+  color: var(--white);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+ul { margin: 0; padding: 0; list-style: none; }
+button { font-family: inherit; cursor: pointer; }
+::selection { background: var(--violet); color: var(--white); }
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+p { margin: 0; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--violet-light);
+  outline-offset: 3px;
+}
+
+/* Layout helpers */
+.wrap {
+  width: min(calc(100% - 64px), var(--container));
+  margin-inline: auto;
+  position: relative;
+}
+.section { padding-block: var(--section-space); position: relative; }
+.section-head {
+  max-width: 680px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+.section-head.align-left { margin: 0 0 48px; text-align: left; }
+.band { background: var(--panel); border-block: 1px solid var(--line); }
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  color: var(--violet-light);
+  font: 500 0.78rem/1.4 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.section-head .eyebrow { justify-content: center; }
+.split-text .eyebrow { justify-content: flex-start; }
+.eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--violet); flex-shrink: 0; }
+
+.section-title { font-size: clamp(1.9rem, 3.4vw, 2.7rem); color: var(--white); }
+.section-sub { margin-top: 18px; color: var(--muted); font-size: 1.02rem; }
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 34px;
+  border: 0;
+  border-radius: var(--radius-control);
+  background: var(--violet);
+  color: var(--void);
+  font: 500 0.92rem/1 var(--font-mono);
+  letter-spacing: 0.02em;
+  box-shadow: 0 0 0 1px rgb(139 92 246 / 40%), 0 18px 40px -12px rgb(139 92 246 / 55%);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  white-space: nowrap;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgb(167 139 250 / 60%), 0 22px 46px -10px rgb(139 92 246 / 70%); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 15px 32px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--white);
+  font: 500 0.92rem/1 var(--font-mono);
+  transition: border-color var(--transition-fast), transform var(--transition-fast), color var(--transition-fast);
+}
+.btn-secondary:hover { border-color: var(--violet); color: var(--violet-light); transform: translateY(-2px); }
+
+/* Cards */
+.card {
+  padding: 30px 28px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  transition: border-color 300ms ease, transform 300ms ease;
+  position: relative;
+  overflow: hidden;
+}
+.card:hover { border-color: var(--violet); transform: translateY(-3px); }
+.card h3 { margin: 0 0 10px; color: var(--white); font-size: 1.12rem; }
+.card p { margin: 0; color: var(--muted); font-size: 0.94rem; }
+
+.glow-on-hover { position: relative; overflow: hidden; }
+.glow-on-hover::after {
+  content: '';
+  position: absolute;
+  width: 160px; height: 160px;
+  top: -40%; right: -30%;
+  background: radial-gradient(circle, rgb(139 92 246 / 18%), transparent 70%);
+  opacity: 0;
+  transition: opacity 350ms ease;
+  pointer-events: none;
+}
+.glow-on-hover:hover::after { opacity: 1; }
+
+.accent-text {
+  background: linear-gradient(90deg, var(--violet-light), var(--violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Reveal animation */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 700ms ease, transform 700ms ease; }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* Blueprint grid backdrop (industrial technical-grid texture) */
+.blueprint-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 42px 42px;
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+/* ============================================================
+   2. HEADER
+   ============================================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid transparent;
+  transition: background-color var(--transition-base), border-color var(--transition-base), backdrop-filter var(--transition-base);
+}
+.site-header.is-scrolled {
+  background: rgb(8 11 26 / 88%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: var(--line);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-block: 18px;
+}
+.brand { display: flex; align-items: center; gap: 10px; flex-shrink: 0; min-width: 0; }
+.brand-logo { width: 40px; height: 40px; object-fit: contain; border-radius: 8px; flex-shrink: 0; }
+.brand-name { font-family: var(--font-display); font-weight: 700; font-size: 1.02rem; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.brand-name span { color: var(--violet-light); font-weight: 400; }
+
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-weight: 500;
+  position: relative;
+  padding-block: 4px;
+  transition: color var(--transition-fast);
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 0; height: 1px;
+  background: var(--violet-light);
+  transition: width var(--transition-fast);
+}
+.nav-links a:hover, .nav-links a.is-active { color: var(--white); }
+.nav-links a.is-active::after, .nav-links a:hover::after { width: 100%; }
+
+.header-actions { display: flex; align-items: center; gap: 18px; flex-shrink: 0; }
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  background: var(--violet);
+  color: var(--void);
+  font: 500 0.82rem/1 var(--font-mono);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 0 0 1px rgb(139 92 246 / 40%);
+  white-space: nowrap;
+}
+.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgb(167 139 250 / 60%), 0 14px 30px -12px rgb(139 92 246 / 60%); }
+
+.menu-toggle {
+  display: none;
+  width: 42px; height: 42px;
+  border-radius: var(--radius-control);
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.menu-toggle-icon { width: 18px; height: 12px; position: relative; }
+.menu-toggle-icon i {
+  position: absolute; left: 0; width: 100%; height: 2px; background: var(--white);
+  border-radius: 2px; transition: transform var(--transition-fast), opacity var(--transition-fast), top var(--transition-fast);
+}
+.menu-toggle-icon i:nth-child(1) { top: 0; }
+.menu-toggle-icon i:nth-child(2) { top: 5px; }
+.menu-toggle-icon i:nth-child(3) { top: 10px; }
+.menu-toggle[aria-expanded="true"] .menu-toggle-icon i:nth-child(1) { top: 5px; transform: rotate(45deg); }
+.menu-toggle[aria-expanded="true"] .menu-toggle-icon i:nth-child(2) { opacity: 0; }
+.menu-toggle[aria-expanded="true"] .menu-toggle-icon i:nth-child(3) { top: 5px; transform: rotate(-45deg); }
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  inset: 0;
+  top: 0;
+  z-index: 99;
+  background: var(--void);
+  padding: 100px 32px 40px;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  transform: translateY(-12px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-base), transform var(--transition-base), visibility var(--transition-base);
+}
+.mobile-nav.is-open { display: flex; opacity: 1; transform: translateY(0); visibility: visible; }
+.mobile-nav a {
+  padding: 16px 4px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--white);
+}
+.mobile-nav .nav-cta { align-self: flex-start; margin-top: 22px; text-align: center; }
+
+/* ============================================================
+   3. CIRCUIT SPINE (desktop scroll-progress, decorative)
+   ============================================================ */
+.circuit-spine {
+  position: fixed;
+  top: 0; bottom: 0;
+  left: 28px;
+  width: 2px;
+  z-index: 5;
+  pointer-events: none;
+  background: var(--line);
+}
+.circuit-spine-fill {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 0%;
+  background: linear-gradient(180deg, transparent, var(--violet) 40%, var(--violet-light));
+  transition: height 150ms linear;
+}
+.circuit-node {
+  position: absolute;
+  left: -4px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--panel-2);
+  border: 2px solid var(--line);
+  transition: border-color var(--transition-base), background var(--transition-base), box-shadow var(--transition-base);
+}
+.circuit-node.is-active { border-color: var(--violet); background: var(--violet-light); box-shadow: 0 0 16px 3px rgb(139 92 246 / 75%); }
+
+/* ============================================================
+   4. HERO
+   ============================================================ */
+.hero { padding-top: 120px; padding-bottom: 100px; position: relative; overflow: hidden; }
+.hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 60px; align-items: center; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: var(--violet-light);
+  font: 500 0.78rem/1.4 var(--font-mono);
+  letter-spacing: 0.14em; text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hero-eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--violet); }
+.hero h1 { font-size: clamp(2.1rem, 5.4vw, 4.4rem); line-height: 1.1; color: var(--white); margin-bottom: 26px; }
+.hero-lead { max-width: 560px; color: var(--muted); font-size: 1.08rem; line-height: 1.65; margin-bottom: 16px; }
+.hero-lead strong { color: var(--white); font-weight: 600; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 36px; }
+.hero-visual { position: relative; max-width: 100%; }
+.hero-visual svg { width: 100%; height: auto; display: block; }
+
+/* ============================================================
+   5. THE REALITY (two-column: text + problem list)
+   ============================================================ */
+.reality-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 56px; align-items: start; }
+.reality-text p { color: var(--muted); font-size: 1.02rem; line-height: 1.7; margin-bottom: 18px; }
+.reality-list { display: flex; flex-direction: column; gap: 14px; }
+.reality-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 18px 20px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  transition: border-color var(--transition-base);
+}
+.reality-item:hover { border-color: var(--violet); }
+.reality-item .dot {
+  flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--violet); margin-top: 8px;
+  box-shadow: 0 0 10px 2px rgb(139 92 246 / 55%);
+}
+.reality-item p { color: var(--muted); font-size: 0.94rem; }
+.reality-close {
+  margin-top: 26px;
+  font-family: var(--font-display);
+  font-size: 1.18rem;
+  color: var(--white);
+  padding-left: 20px;
+  border-left: 2px solid var(--violet);
+}
+
+/* ============================================================
+   6. GAP CARDS (Why Manufacturing Businesses Struggle)
+   ============================================================ */
+.gap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.gap-card { padding: 30px 28px; }
+.gap-number { font-family: var(--font-mono); font-size: 0.85rem; color: var(--violet-light); letter-spacing: 0.08em; margin-bottom: 20px; display: block; }
+.gap-card h3 { font-size: 1.2rem; margin-bottom: 12px; }
+.gap-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
+.gap-indicator { display: flex; gap: 6px; align-items: center; }
+.gap-indicator .seg { width: 20px; height: 2px; background: var(--line); }
+.gap-indicator .node { width: 6px; height: 6px; border-radius: 50%; background: var(--line); transition: background var(--transition-base), box-shadow var(--transition-base); }
+.gap-card:hover .gap-indicator .node { background: var(--violet); box-shadow: 0 0 10px 2px rgb(139 92 246 / 55%); }
+.gap-card:hover .gap-indicator .seg { background: var(--violet-2); }
+
+/* ============================================================
+   7. MEET RA STUDIO (split)
+   ============================================================ */
+.split-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.split-text p { color: var(--muted); font-size: 1.02rem; line-height: 1.7; margin-bottom: 18px; }
+.split-text ul.check-list { display: flex; flex-direction: column; gap: 12px; margin: 22px 0; }
+.split-text ul.check-list li { display: flex; align-items: center; gap: 10px; color: var(--white); font-size: 0.95rem; }
+.split-text ul.check-list svg { flex-shrink: 0; width: 18px; height: 18px; stroke: var(--violet-light); }
+.statement-badge {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 14px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--white);
+  background: var(--panel-2);
+}
+.split-visual {
+  display: flex; align-items: center; justify-content: center;
+  padding: 48px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  position: relative;
+  overflow: hidden;
+}
+.split-visual::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 20%, rgb(139 92 246 / 12%), transparent 60%); }
+.split-visual img { max-width: 220px; width: 100%; position: relative; z-index: 1; }
+
+/* ============================================================
+   8. HOW WE HELP (outcome grid)
+   ============================================================ */
+.outcome-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.outcome-card {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 22px 22px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  transition: border-color var(--transition-base), transform var(--transition-base);
+}
+.outcome-card:hover { border-color: var(--violet); transform: translateY(-2px); }
+.outcome-icon {
+  flex-shrink: 0; width: 38px; height: 38px;
+  border-radius: 10px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+}
+.outcome-icon svg { width: 18px; height: 18px; stroke: var(--violet-light); fill: none; stroke-width: 1.6; }
+.outcome-card p { color: var(--white); font-size: 0.96rem; font-weight: 500; line-height: 1.5; }
+
+/* ============================================================
+   9. SERVICES GRID (What We Can Build)
+   ============================================================ */
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.service-card { display: flex; flex-direction: column; }
+.service-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+  flex-shrink: 0;
+}
+.service-icon svg { width: 22px; height: 22px; stroke: var(--violet-light); fill: none; stroke-width: 1.6; }
+.service-card h3 { font-size: 1.08rem; margin-bottom: 10px; }
+.service-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 18px; flex-grow: 1; }
+.service-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.service-tags span {
+  font: 400 0.72rem/1.4 var(--font-mono);
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 5px 12px;
+  background: var(--panel);
+}
+
+/* ============================================================
+   10. FREE CONSULTATION SECTION
+   ============================================================ */
+.consult-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+.consult-question { font-family: var(--font-display); font-size: 1.3rem; color: var(--white); margin-top: 20px; margin-bottom: 14px; }
+.consult-desc { color: var(--muted); font-size: 1rem; line-height: 1.7; margin-bottom: 22px; }
+.consult-closing { font-family: var(--font-display); font-size: 1.15rem; color: var(--white); }
+
+.consult-card {
+  position: relative;
+  padding: 40px 34px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  box-shadow: 0 0 0 1px rgb(139 92 246 / 12%), 0 30px 60px -30px rgb(139 92 246 / 35%);
+  overflow: hidden;
+}
+.consult-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.12;
+  pointer-events: none;
+}
+.consult-badge {
+  position: relative; z-index: 1;
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--violet);
+  color: var(--void);
+  font: 600 0.7rem/1.4 var(--font-mono);
+  letter-spacing: 0.1em;
+  margin-bottom: 22px;
+}
+.consult-card h3 { position: relative; z-index: 1; font-size: 1.35rem; margin-bottom: 24px; color: var(--white); }
+.consult-benefits { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 16px; margin-bottom: 26px; }
+.consult-benefit { display: flex; align-items: center; gap: 12px; }
+.consult-benefit svg { flex-shrink: 0; width: 20px; height: 20px; }
+.consult-benefit span { color: var(--white); font-size: 0.96rem; font-weight: 500; }
+.consult-trust {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-bottom: 26px;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--muted);
+  font: 500 0.76rem/1.4 var(--font-mono);
+}
+.consult-trust svg { width: 14px; height: 14px; stroke: var(--violet-light); }
+.consult-card .btn-primary { position: relative; z-index: 1; width: 100%; }
+
+/* ============================================================
+   11. PROCESS (How We Work) — production-line timeline
+   ============================================================ */
+.process-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; position: relative; }
+.process-list::before { content: ''; position: absolute; top: 44px; left: 0; right: 0; height: 1px; background: var(--line); z-index: 0; }
+.process-step { position: relative; z-index: 1; }
+.process-marker {
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px;
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  color: var(--violet-light);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+.process-step:hover .process-marker { border-color: var(--violet); box-shadow: 0 0 20px 2px rgb(139 92 246 / 30%); }
+.process-step h3 { font-size: 1.1rem; margin-bottom: 10px; }
+.process-step p { color: var(--muted); font-size: 0.92rem; line-height: 1.6; }
+
+/* ============================================================
+   12. WHY CHOOSE (alternating rows)
+   ============================================================ */
+.why-rows { display: flex; flex-direction: column; }
+.why-row {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 24px;
+  align-items: start;
+  padding: 30px 0;
+  border-bottom: 1px solid var(--line);
+}
+.why-row:first-child { border-top: 1px solid var(--line); }
+.why-row .why-num { font-family: var(--font-mono); color: var(--violet-light); font-size: 0.95rem; padding-top: 4px; }
+.why-row h3 { font-size: 1.15rem; color: var(--white); margin-bottom: 8px; }
+.why-row p { color: var(--muted); font-size: 0.98rem; line-height: 1.7; }
+
+/* ============================================================
+   13. FAQ ACCORDION
+   ============================================================ */
+.faq-list { display: flex; flex-direction: column; gap: 14px; max-width: 820px; margin: 0 auto; }
+.faq-item { border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--panel-2); overflow: hidden; }
+.faq-question {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+  padding: 22px 26px;
+  background: transparent;
+  border: 0;
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+}
+.faq-icon { flex-shrink: 0; width: 22px; height: 22px; position: relative; }
+.faq-icon::before, .faq-icon::after { content: ''; position: absolute; background: var(--violet-light); border-radius: 2px; transition: transform var(--transition-base); }
+.faq-icon::before { top: 50%; left: 0; width: 100%; height: 2px; margin-top: -1px; }
+.faq-icon::after { left: 50%; top: 0; width: 2px; height: 100%; margin-left: -1px; }
+.faq-question[aria-expanded="true"] .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+.faq-answer-wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--transition-base); }
+.faq-question[aria-expanded="true"] + .faq-answer-wrap { grid-template-rows: 1fr; }
+.faq-answer-inner { overflow: hidden; }
+.faq-answer { padding: 0 26px 24px; color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
+
+/* ============================================================
+   14. FINAL CTA
+   ============================================================ */
+.final-cta { text-align: center; padding-block: 130px; position: relative; }
+.final-cta h2 { font-size: clamp(2rem, 4.4vw, 3.4rem); color: var(--white); max-width: 780px; margin: 0 auto 22px; }
+.final-cta p { color: var(--muted); font-size: 1.05rem; max-width: 620px; margin: 0 auto 10px; line-height: 1.7; }
+.final-cta .btn-primary { margin-top: 34px; }
+.contact-insights { max-width: 560px; margin: 50px auto 0; text-align: left; }
+.contact-insights > .section-title-sm { font-size: clamp(1.4rem, 2.6vw, 1.9rem); color: var(--white); text-align: center; margin-bottom: 8px; }
+.contact-insights > .consult-question { text-align: center; margin-top: 0; }
+.contact-insights .consult-card { margin-top: 26px; text-align: left; }
+.contact-insights .consult-closing { margin-top: 6px; }
+.contact-insights .consult-card .btn-primary { margin-top: 24px; }
+.contact-methods { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 46px; }
+.contact-chip {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--white);
+  font-size: 0.92rem;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+  background: var(--panel-2);
+}
+.contact-chip:hover { border-color: var(--violet); transform: translateY(-2px); }
+.contact-chip svg { width: 18px; height: 18px; stroke: var(--violet-light); flex-shrink: 0; }
+
+/* ============================================================
+   15. FOOTER
+   ============================================================ */
+.site-footer { border-top: 1px solid var(--line); padding-block: 60px 34px; background: var(--panel); }
+.footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; margin-bottom: 44px; }
+.footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.footer-logo { width: 36px; height: 36px; object-fit: contain; border-radius: 8px; }
+.footer-tagline { color: var(--muted); font-size: 0.92rem; max-width: 320px; }
+.footer-heading { font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--violet-light); margin-bottom: 18px; }
+.footer-links { display: flex; flex-direction: column; gap: 12px; }
+.footer-links a { color: var(--muted); font-size: 0.92rem; transition: color var(--transition-fast); word-break: break-word; }
+.footer-links a:hover { color: var(--white); }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 26px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+.footer-copy { color: var(--muted-2); font-size: 0.84rem; }
+.back-to-top {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--muted);
+  font: 500 0.78rem/1 var(--font-mono);
+  background: transparent;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+.back-to-top:hover { border-color: var(--violet); color: var(--violet-light); }
+.back-to-top svg { width: 14px; height: 14px; }
+
+/* ============================================================
+   16. RESPONSIVE
+   ============================================================ */
+
+/* Large tablets / small laptops */
+@media (max-width: 1100px) {
+  .wrap { width: min(calc(100% - 48px), var(--container)); }
+}
+
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-visual { order: -1; max-width: 420px; margin: 0 auto 20px; }
+  .gap-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+}
+
+@media (max-width: 920px) {
+  .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gap-grid { grid-template-columns: repeat(2, 1fr); }
+  .outcome-grid { grid-template-columns: 1fr; }
+  .process-list { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
+  .process-list::before { display: none; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .reality-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* Tablet / nav collapse */
+@media (max-width: 880px) {
+  .nav-links { display: none; }
+  .circuit-spine { display: none; }
+  .menu-toggle { display: flex; }
+  .header-actions .nav-cta { display: none; }
+  .split-layout, .consult-grid { grid-template-columns: 1fr; gap: 36px; }
+  .split-visual { order: -1; }
+  :root { --section-space: 90px; }
+}
+
+@media (max-width: 760px) {
+  .gap-grid { grid-template-columns: 1fr; }
+  .wrap { width: min(calc(100% - 40px), var(--container)); }
+  .section { padding-block: 70px; }
+  .hero { padding-top: 80px; padding-bottom: 60px; }
+  .process-list { grid-template-columns: 1fr; }
+  .process-marker { width: 72px; height: 72px; margin-bottom: 18px; }
+  .final-cta { padding-block: 80px; }
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .hero-actions .btn-primary, .hero-actions .btn-secondary { width: 100%; }
+  .consult-card { padding: 32px 24px; }
+  .why-row { grid-template-columns: 44px 1fr; gap: 16px; padding: 24px 0; }
+  .section-head { margin-bottom: 44px; }
+  .faq-question { padding: 18px 20px; font-size: 0.95rem; }
+  .faq-answer { padding: 0 20px 20px; }
+}
+
+/* Mobile */
+@media (max-width: 620px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .contact-chip { width: 100%; }
+  .contact-methods { flex-direction: column; }
+  .header-inner { padding-block: 14px; }
+  .brand-logo { width: 34px; height: 34px; }
+  .brand-name { font-size: 0.92rem; }
+  .hero-visual { max-width: 300px; }
+  .final-cta .btn-primary { width: 100%; }
+  .why-row { grid-template-columns: 1fr; }
+  .why-row .why-num { padding-top: 0; }
+}
+
+/* Small phones */
+@media (max-width: 420px) {
+  .wrap { width: min(calc(100% - 28px), var(--container)); }
+  .section { padding-block: 56px; }
+  .hero { padding-top: 64px; padding-bottom: 48px; }
+  .hero h1 { font-size: clamp(1.7rem, 8vw, 2.2rem); }
+  .hero-lead { font-size: 1rem; }
+  .btn-primary, .btn-secondary { padding: 14px 22px; font-size: 0.86rem; }
+  .section-title { font-size: clamp(1.5rem, 6vw, 2rem); }
+  .card, .gap-card, .service-card { padding: 22px 20px; }
+  .consult-card { padding: 26px 18px; }
+  .consult-card h3 { font-size: 1.15rem; }
+  .split-visual { padding: 28px; }
+  .final-cta h2 { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+  .mobile-nav { padding: 90px 20px 32px; }
+  .nav-cta { padding: 11px 20px; font-size: 0.78rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SKIP LINK & CIRCUIT SPINE (decorative, hidden below 880px)
+     ============================================================ -->
+<a href="#main" style="position:absolute;left:-9999px;top:0;background:var(--violet);color:var(--void);padding:12px 20px;border-radius:8px;z-index:200;">Skip to main content</a>
+
+<div class="circuit-spine" aria-hidden="true">
+  <div class="circuit-spine-fill" id="spineFill"></div>
+  <span class="circuit-node" data-node style="top:12%;"></span>
+  <span class="circuit-node" data-node style="top:24%;"></span>
+  <span class="circuit-node" data-node style="top:36%;"></span>
+  <span class="circuit-node" data-node style="top:48%;"></span>
+  <span class="circuit-node" data-node style="top:60%;"></span>
+  <span class="circuit-node" data-node style="top:72%;"></span>
+  <span class="circuit-node" data-node style="top:84%;"></span>
+</div>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header" id="siteHeader">
+  <div class="wrap header-inner">
+    <a href="#top" class="brand" aria-label="RA Studio home">
+      <img class="brand-logo" data-logo-slot alt="RA Studio - Result with Authority">
+      <span class="brand-name">RA <span>STUDIO</span></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="#reality" data-nav-link>Reality</a>
+      <a href="#solutions" data-nav-link>Solutions</a>
+      <a href="#free-consultation" data-nav-link>Free Consultation</a>
+      <a href="#process" data-nav-link>Process</a>
+      <a href="#why-us" data-nav-link>Why RA Studio</a>
+      <a href="#faq" data-nav-link>FAQ</a>
+    </nav>
+
+    <div class="header-actions">
+      <button type="button" class="nav-cta" data-scroll-target="#contact">Book Consultation</button>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+        <span class="menu-toggle-icon"><i></i><i></i><i></i></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <a href="#reality" data-nav-link data-mobile-link>Reality</a>
+  <a href="#solutions" data-nav-link data-mobile-link>Solutions</a>
+  <a href="#free-consultation" data-nav-link data-mobile-link>Free Consultation</a>
+  <a href="#process" data-nav-link data-mobile-link>Process</a>
+  <a href="#why-us" data-nav-link data-mobile-link>Why RA Studio</a>
+  <a href="#faq" data-nav-link data-mobile-link>FAQ</a>
+  <button type="button" class="nav-cta" data-mobile-link data-scroll-target="#contact">Book Consultation</button>
+</nav>
+
+<main id="main">
+<div id="top"></div>
+
+<!-- ============================================================
+     1. HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-content reveal">
+      <span class="hero-eyebrow">Digital Growth Systems for Manufacturers</span>
+      <h1>Your Products Deserve a Business That Looks as <span class="accent-text">Strong as What You Build.</span></h1>
+      <p class="hero-lead">Manufacturing built your business. But growth becomes difficult when buyers cannot find you, do not trust what they see, or enquiries disappear through missed calls and inconsistent follow-up.</p>
+      <p class="hero-lead"><strong>RA Studio connects visibility, buyer trust, enquiry generation, lead management and automation into one working growth system.</strong></p>
+      <div class="hero-actions">
+        <button type="button" class="btn-primary" data-scroll-target="#contact">Book Your Free Growth Consultation</button>
+        <a href="#solutions" class="btn-secondary" data-smooth>Explore Our Solutions</a>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal" aria-hidden="true">
+      <!-- Industrial growth-system visual: Visibility -> Trust -> Follow-up -> Orders -->
+      <svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#8b5cf6"/>
+            <stop offset="100%" stop-color="#c4b5fd"/>
+          </linearGradient>
+          <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <circle cx="260" cy="260" r="230" fill="url(#glowGrad)"/>
+        <circle cx="260" cy="260" r="190" fill="none" stroke="#232a52" stroke-width="1"/>
+        <circle cx="260" cy="260" r="140" fill="none" stroke="#232a52" stroke-width="1"/>
+        <rect x="30" y="30" width="460" height="460" fill="none" stroke="#232a52" stroke-width="1" stroke-dasharray="2 6" opacity="0.5"/>
+
+        <g transform="translate(260,260)">
+          <circle r="52" fill="#0f1430" stroke="#8b5cf6" stroke-width="1.5"/>
+          <circle r="30" fill="none" stroke="#a78bfa" stroke-width="1.2"/>
+          <path d="M0,-52 L0,-64 M0,52 L0,64 M-52,0 L-64,0 M52,0 L64,0 M-37,-37 L-45,-45 M37,-37 L45,-45 M-37,37 L-45,45 M37,37 L45,45" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round"/>
+          <rect x="-14" y="-14" width="28" height="28" rx="4" fill="none" stroke="#c4b5fd" stroke-width="1.4"/>
+        </g>
+
+        <g font-family="JetBrains Mono, monospace" font-size="11" fill="#c4b5fd" letter-spacing="0.5">
+          <path d="M260,120 L260,208" stroke="url(#lineGrad)" stroke-width="2"/>
+          <path d="M400,260 L312,260" stroke="url(#lineGrad)" stroke-width="2"/>
+          <path d="M260,400 L260,312" stroke="url(#lineGrad)" stroke-width="2"/>
+          <path d="M120,260 L208,260" stroke="url(#lineGrad)" stroke-width="2"/>
+
+          <circle cx="260" cy="100" r="20" fill="#131a3a" stroke="#8b5cf6" stroke-width="1.5"/>
+          <circle cx="260" cy="100" r="4" fill="#c4b5fd"/>
+          <text x="260" y="70" text-anchor="middle">VISIBILITY</text>
+
+          <circle cx="420" cy="260" r="20" fill="#131a3a" stroke="#8b5cf6" stroke-width="1.5"/>
+          <circle cx="420" cy="260" r="4" fill="#c4b5fd"/>
+          <text x="420" y="300" text-anchor="middle">TRUST</text>
+
+          <circle cx="260" cy="420" r="20" fill="#131a3a" stroke="#8b5cf6" stroke-width="1.5"/>
+          <circle cx="260" cy="420" r="4" fill="#c4b5fd"/>
+          <text x="260" y="452" text-anchor="middle">FOLLOW-UP</text>
+
+          <circle cx="100" cy="260" r="20" fill="#131a3a" stroke="#8b5cf6" stroke-width="1.5"/>
+          <circle cx="100" cy="260" r="4" fill="#c4b5fd"/>
+          <text x="100" y="300" text-anchor="middle">ORDERS</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     2. THE REALITY
+     ============================================================ -->
+<section class="section band" id="reality">
+  <div class="wrap">
+    <div class="reality-grid">
+      <div class="reality-text reveal">
+        <span class="eyebrow">The Reality</span>
+        <h2 class="section-title" style="margin-bottom:22px;">The digital challenges manufacturers actually face</h2>
+        <p>Buyers, distributors and exporters research a supplier long before they ever pick up the phone. If your business is hard to find, looks less established than it should, or takes too long to respond, the enquiry goes to whoever answered first — not necessarily whoever makes the better product.</p>
+        <p>This shows up in ways that rarely get tracked on a balance sheet, but quietly shape how much business a manufacturer wins.</p>
+      </div>
+
+      <div class="reality-list reveal">
+        <p style="color:var(--muted-2);font:500 0.78rem/1.4 var(--font-mono);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;">Where growth quietly stalls</p>
+        <div class="reality-item"><span class="dot"></span><p>Buyers cannot find the business online</p></div>
+        <div class="reality-item"><span class="dot"></span><p>The website does not represent actual product quality</p></div>
+        <div class="reality-item"><span class="dot"></span><p>The company looks less established than competitors</p></div>
+        <div class="reality-item"><span class="dot"></span><p>Enquiries are missed or answered too slowly</p></div>
+        <div class="reality-item"><span class="dot"></span><p>Leads are scattered between calls, email and WhatsApp</p></div>
+        <div class="reality-item"><span class="dot"></span><p>There is no structured follow-up system</p></div>
+        <div class="reality-item"><span class="dot"></span><p>Manual administration slows growth</p></div>
+        <div class="reality-item"><span class="dot"></span><p>Smaller competitors win because they simply appear more organized</p></div>
+        <p class="reality-close">These are not only marketing problems. They are business-growth problems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     3. WHY MANUFACTURING BUSINESSES STRUGGLE
+     ============================================================ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why Manufacturing Businesses Struggle</span>
+      <h2 class="section-title">Three gaps, not a weaker product</h2>
+      <p class="section-sub">Most manufacturers we work with aren't losing business because of quality. They're losing it to three specific, fixable gaps.</p>
+    </div>
+
+    <div class="gap-grid">
+      <div class="card gap-card glow-on-hover reveal">
+        <span class="gap-number">01 — VISIBILITY GAP</span>
+        <h3>Buyers cannot find you.</h3>
+        <p>Buyers cannot find the manufacturer when searching for suppliers, exporters or industrial solutions.</p>
+        <div class="gap-indicator"><span class="node"></span><span class="seg"></span><span class="node"></span><span class="seg"></span><span class="node"></span></div>
+      </div>
+      <div class="card gap-card glow-on-hover reveal">
+        <span class="gap-number">02 — TRUST GAP</span>
+        <h3>Doubt sets in before contact.</h3>
+        <p>An outdated website, unclear company profile or inconsistent brand creates doubt before a buyer contacts the company.</p>
+        <div class="gap-indicator"><span class="node"></span><span class="seg"></span><span class="node"></span><span class="seg"></span><span class="node"></span></div>
+      </div>
+      <div class="card gap-card glow-on-hover reveal">
+        <span class="gap-number">03 — FOLLOW-UP GAP</span>
+        <h3>Enquiries fall through the cracks.</h3>
+        <p>Enquiries are lost because calls, emails and WhatsApp messages are not tracked or answered quickly.</p>
+        <div class="gap-indicator"><span class="node"></span><span class="seg"></span><span class="node"></span><span class="seg"></span><span class="node"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     4. MEET RA STUDIO
+     ============================================================ -->
+<section class="section band">
+  <div class="wrap">
+    <div class="split-layout">
+      <div class="split-text reveal">
+        <span class="eyebrow">Meet RA Studio</span>
+        <h2 class="section-title" style="margin-bottom:20px;">A growth partner, not just a website team</h2>
+        <p>RA Studio is a manufacturing growth partner — more than a website-development company, and different from a generic advertising agency.</p>
+        <p>We focus on B2B buyers, exporters and distributors, and we're built around the reality of longer sales cycles and higher-trust decisions. Before we design, build or automate anything, we take the time to understand:</p>
+        <ul class="check-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Your products</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Your buyers and markets</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Your competitors and business bottlenecks</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Your growth goals</li>
+        </ul>
+        <p>Only then do we design the digital growth system that fits.</p>
+        <div class="statement-badge">Result with Authority.</div>
+      </div>
+      <div class="split-visual reveal">
+        <img data-logo-slot alt="RA Studio - Result with Authority">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     5. HOW WE HELP
+     ============================================================ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">How We Help</span>
+      <h2 class="section-title">Business outcomes, not vanity metrics</h2>
+      <p class="section-sub">This is what a working digital growth system delivers for a manufacturer.</p>
+    </div>
+
+    <div class="outcome-grid reveal">
+      <div class="outcome-card">
+        <div class="outcome-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></div>
+        <p>Get found by the right buyers</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg></div>
+        <p>Build trust before the first conversation</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon"><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
+        <p>Turn website traffic into enquiries</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+        <p>Improve enquiry response time</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+        <p>Organize customer follow-up</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="4"/></svg></div>
+        <p>Reduce repetitive manual work</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+        <p>Make better business decisions</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div>
+        <p>Build systems that support long-term growth</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     6. WHAT WE CAN BUILD (SERVICES)
+     ============================================================ -->
+<section class="section band" id="solutions">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">What We Can Build</span>
+      <h2 class="section-title">A complete growth system, not a single service</h2>
+      <p class="section-sub">Every piece is engineered to work together as one connected growth system.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="card service-card glow-on-hover reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/><circle cx="6.5" cy="6.5" r="0.6"/></svg></div>
+        <h3>Build Your Digital Presence</h3>
+        <p>A manufacturing business website built to load fast, look credible and convert visitors into enquiries.</p>
+        <div class="service-tags"><span>Custom Web Development</span><span>Responsive Design</span><span>SSL &amp; Domain Setup</span></div>
+      </div>
+
+      <div class="card service-card glow-on-hover reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 1-4.5 4.3L17.5 20 12 16.8 6.5 20l1-6.7L3 9l6-1 3-6z"/></svg></div>
+        <h3>Strengthen Your Brand</h3>
+        <p>A consistent identity — so every touchpoint looks like the established manufacturer you are.</p>
+        <div class="service-tags"><span>Company Profiles</span><span>Brand Guidelines</span><span>Presentation Design</span></div>
+      </div>
+
+      <div class="card service-card glow-on-hover reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></div>
+        <h3>Increase Online Visibility</h3>
+        <p>Get found by the buyers already searching for what you make, across search and local listings.</p>
+        <div class="service-tags"><span>SEO &amp; Local SEO</span><span>Technical SEO</span><span>Google Business Profile</span></div>
+      </div>
+
+      <div class="card service-card glow-on-hover reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 12h16M12 4v16" transform="rotate(45 12 12)"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h3>Generate More Leads</h3>
+        <p>Turn visibility into real enquiries through targeted advertising and direct outreach.</p>
+        <div class="service-tags"><span>Google Ads</span><span>Meta Ads</span><span>Landing Pages</span><span>Email &amp; WhatsApp Marketing</span></div>
+      </div>
+
+      <div class="card service-card glow-on-hover reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h13"/></svg></div>
+        <h3>Create Better Content</h3>
+        <p>Clear, confident content that explains your business and builds trust fast.</p>
+        <div class="service-tags"><span>Website Copy</span><span>Landing Page Copy</span><span>Company Content</span></div>
+      </div>
+
+      <div class="card service-card glow-on-hover reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+        <h3>Manage Customer Relationships</h3>
+        <p>A CRM that organizes every lead, tracks your pipeline, and keeps your team aligned.</p>
+        <div class="service-tags"><span>CRM Setup</span><span>Pipeline Management</span><span>Lead Tracking</span><span>Client Portals</span></div>
+      </div>
+
+      <div class="card service-card glow-on-hover reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="4"/></svg></div>
+        <h3>Automate Repetitive Work</h3>
+        <p>Let automation handle the tasks your team shouldn't have to do manually.</p>
+        <div class="service-tags"><span>Workflow Automation</span><span>AI Chatbots</span><span>Follow-up Automation</span></div>
+      </div>
+
+      <div class="card service-card glow-on-hover reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+        <h3>Business Intelligence</h3>
+        <p>Make decisions based on facts, not guesswork, using clear reporting on what's working.</p>
+        <div class="service-tags"><span>Dashboards</span><span>Reporting</span></div>
+      </div>
+
+      <div class="card service-card glow-on-hover reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg></div>
+        <h3>Enterprise Solutions</h3>
+        <p>For manufacturers ready to run on custom-built systems designed around their operations.</p>
+        <div class="service-tags"><span>Databases</span><span>Admin Panels</span><span>API Integrations</span></div>
+      </div>
+
+      <div class="card service-card glow-on-hover reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 4a8 8 0 100 16 8 8 0 000-16z"/><path d="M12 8v4l3 2"/></svg></div>
+        <h3>Maintain and Improve</h3>
+        <p>A digital presence is never "done." Ongoing support keeps your systems fast, safe and current.</p>
+        <div class="service-tags"><span>Website Maintenance</span><span>Security Monitoring</span><span>Performance Optimization</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     7. FREE CONSULTATION
+     ============================================================ -->
+<section class="section" id="free-consultation">
+  <div class="wrap">
+    <div class="consult-grid">
+      <div class="consult-text reveal">
+        <span class="eyebrow">Free Business Growth Consultation</span>
+        <h2 class="section-title">Get Insights Before You Invest</h2>
+        <p class="consult-question">Not sure what's holding your business back?</p>
+        <p class="consult-desc">We'll analyze your current challenges, identify growth opportunities, and recommend the right strategy to help you scale with confidence.</p>
+        <p class="consult-closing">Ready to Grow Your Business?</p>
+      </div>
+
+      <div class="consult-card reveal">
+        <span class="consult-badge">FREE</span>
+        <h3>Book a FREE Business Growth Consultation</h3>
+        <div class="consult-benefits">
+          <div class="consult-benefit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>100% Free</span>
+          </div>
+          <div class="consult-benefit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>30 Minute Strategy Session</span>
+          </div>
+          <div class="consult-benefit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Personalized Growth Recommendations</span>
+          </div>
+        </div>
+        <div class="consult-trust">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c4b5fd" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+          <span>No Obligation</span>
+        </div>
+        <button type="button" class="btn-primary" data-scroll-target="#contact">Book Your Free Business Consultation Today</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     8. HOW WE WORK
+     ============================================================ -->
+<section class="section band" id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">How We Work</span>
+      <h2 class="section-title">A four-step manufacturing growth process</h2>
+    </div>
+
+    <div class="process-list">
+      <div class="process-step reveal">
+        <div class="process-marker">01</div>
+        <h3>Understand</h3>
+        <p>Study the manufacturer, products, buyers, markets, challenges and current systems.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-marker">02</div>
+        <h3>Plan</h3>
+        <p>Create a business-focused growth strategy based on visibility, credibility, lead generation and follow-up.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-marker">03</div>
+        <h3>Build</h3>
+        <p>Develop the website, brand, content, CRM and automation systems.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-marker">04</div>
+        <h3>Grow</h3>
+        <p>Maintain, measure, optimize and scale the system over time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     9. WHY CHOOSE RA STUDIO
+     ============================================================ -->
+<section class="section" id="why-us">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why Choose RA Studio</span>
+      <h2 class="section-title">Built around how manufacturers actually grow</h2>
+    </div>
+
+    <div class="why-rows">
+      <div class="why-row reveal">
+        <span class="why-num">01</span>
+        <div><h3>Business-first thinking</h3><p>Every recommendation is judged against one question — does this bring your business more trust, more visibility, or more revenue?</p></div>
+      </div>
+      <div class="why-row reveal">
+        <span class="why-num">02</span>
+        <div><h3>Clear and transparent communication</h3><p>No inflated reports and no vague metrics. You'll always know exactly what's being done and why.</p></div>
+      </div>
+      <div class="why-row reveal">
+        <span class="why-num">03</span>
+        <div><h3>Long-term growth partnership</h3><p>We're not interested in one-time projects. We build systems that keep working for your business for years.</p></div>
+      </div>
+      <div class="why-row reveal">
+        <span class="why-num">04</span>
+        <div><h3>Understanding of manufacturing and B2B sales</h3><p>Longer sales cycles, B2B buyers, exporters, distributors and OEM relationships — we build around how you actually sell.</p></div>
+      </div>
+      <div class="why-row reveal">
+        <span class="why-num">05</span>
+        <div><h3>Systems designed to scale</h3><p>Every system we create is designed to grow with your business, not need to be rebuilt the moment you expand.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     10. FAQ
+     ============================================================ -->
+<section class="section band" id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="section-title">Questions manufacturers ask us</h2>
+    </div>
+
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="true" aria-controls="faq-answer-1" id="faq-trigger-1">
+          <span>We already have a website. Can RA Studio still help?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer-wrap"><div class="faq-answer-inner">
+          <p class="faq-answer" id="faq-answer-1" role="region" aria-labelledby="faq-trigger-1">Yes. Having a website and having a website that generates enquiries are two different things. We start with an audit to show you exactly where it's underperforming — slow load times, weak search visibility, unclear messaging — and fix what's costing you business.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2" id="faq-trigger-2">
+          <span>Does digital growth work for B2B manufacturers?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer-wrap"><div class="faq-answer-inner">
+          <p class="faq-answer" id="faq-answer-2" role="region" aria-labelledby="faq-trigger-2">Yes — arguably more than for consumer brands. Buyers, distributors and exporters research suppliers online long before they make contact. If you're not visible and credible in that research phase, you're not being considered at all.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3" id="faq-trigger-3">
+          <span>Can you help us generate more qualified enquiries?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer-wrap"><div class="faq-answer-inner">
+          <p class="faq-answer" id="faq-answer-3" role="region" aria-labelledby="faq-trigger-3">Yes. We combine stronger visibility, a credible digital presence and targeted lead generation so that the enquiries reaching you are from buyers genuinely searching for what you manufacture.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4" id="faq-trigger-4">
+          <span>We do not understand SEO, CRM or automation. Is that a problem?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer-wrap"><div class="faq-answer-inner">
+          <p class="faq-answer" id="faq-answer-4" role="region" aria-labelledby="faq-trigger-4">Not at all. That's exactly why we build systems, not tasks. We set everything up, explain it in plain language, and handle the technical side so your team can stay focused on running the business.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5" id="faq-trigger-5">
+          <span>Do you offer one-time projects or long-term support?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer-wrap"><div class="faq-answer-inner">
+          <p class="faq-answer" id="faq-answer-5" role="region" aria-labelledby="faq-trigger-5">Both, but we're built for long-term partnership. A one-time project can start things off, but the businesses that see the most growth are the ones we work with continuously — maintaining, measuring and improving the system over time.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6" id="faq-trigger-6">
+          <span>How do you decide what our manufacturing business needs?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer-wrap"><div class="faq-answer-inner">
+          <p class="faq-answer" id="faq-answer-6" role="region" aria-labelledby="faq-trigger-6">We start with a consultation and audit — understanding your products, buyers, markets and current systems — before recommending anything. The plan is built around your specific bottlenecks, not a generic package.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-7" id="faq-trigger-7">
+          <span>Can you work with exporters, distributors and OEM manufacturers?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer-wrap"><div class="faq-answer-inner">
+          <p class="faq-answer" id="faq-answer-7" role="region" aria-labelledby="faq-trigger-7">Yes. We work across exporters, distributors, OEM suppliers and engineering companies — businesses with longer sales cycles and higher-trust B2B buyers, which is exactly the environment our systems are built for.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-8" id="faq-trigger-8">
+          <span>What happens during the free consultation?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer-wrap"><div class="faq-answer-inner">
+          <p class="faq-answer" id="faq-answer-8" role="region" aria-labelledby="faq-trigger-8">A no-pressure conversation about your business, your current challenges, and where you want to grow. We'll show you specific opportunities we see for your business — whether or not you decide to work with us.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     11. FINAL CTA (contact / whatsapp / email section)
+     ============================================================ -->
+<section class="final-cta" id="contact">
+  <div class="wrap">
+    <span class="eyebrow" style="justify-content:center;">Let's Talk</span>
+    <h2>Let's Engineer Your Growth System.</h2>
+    <p>Tell us about your manufacturing business, products, buyers and growth goals.</p>
+    <p>Our strategists will craft a custom growth blueprint designed specifically for your business.</p>
+
+    <div class="contact-insights reveal">
+      <h3 class="section-title-sm">Get Insights Before You Invest</h3>
+      <p class="consult-question">Not sure what's holding your business back?</p>
+
+      <div class="consult-card">
+        <span class="consult-badge">FREE</span>
+        <h3>Book a FREE Business Growth Consultation</h3>
+        <p class="consult-desc">We'll analyze your current challenges, identify growth opportunities, and recommend the right strategy to help you scale with confidence.</p>
+        <div class="consult-benefits">
+          <div class="consult-benefit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>100% Free</span>
+          </div>
+          <div class="consult-benefit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>30 Minute Strategy Session</span>
+          </div>
+          <div class="consult-benefit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Personalized Growth Recommendations</span>
+          </div>
+        </div>
+        <div class="consult-trust">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c4b5fd" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+          <span>No Obligation</span>
+        </div>
+        <p class="consult-closing">Ready to Grow Your Business?</p>
+        <a href="https://calendly.com/radigitalwork0/30min?month=2026-07" class="btn-primary" target="_blank" rel="noopener">Book Your Free Business Consultation Today</a>
+      </div>
+    </div>
+
+    <div class="contact-methods">
+      <a class="contact-chip" href="tel:+918467886865">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <span>+91 84678 86865</span>
+      </a>
+      <a class="contact-chip" href="https://wa.me/919004390564" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+        <span>WhatsApp: +91 90043 90564</span>
+      </a>
+      <a class="contact-chip" href="mailto:radigitalwork0@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg>
+        <span>radigitalwork0@gmail.com</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <img class="footer-logo" data-logo-slot alt="RA Studio - Result with Authority">
+          <span class="brand-name">RA <span>STUDIO</span></span>
+        </div>
+        <p class="footer-tagline">Result with Authority. A digital growth partner for manufacturing businesses.</p>
+      </div>
+
+      <div>
+        <p class="footer-heading">Navigate</p>
+        <div class="footer-links">
+          <a href="#reality" data-nav-link>Reality</a>
+          <a href="#solutions" data-nav-link>Solutions</a>
+          <a href="#free-consultation" data-nav-link>Free Consultation</a>
+          <a href="#process" data-nav-link>Process</a>
+          <a href="#why-us" data-nav-link>Why RA Studio</a>
+          <a href="#faq" data-nav-link>FAQ</a>
+        </div>
+      </div>
+
+      <div>
+        <p class="footer-heading">Contact</p>
+        <div class="footer-links">
+          <a href="tel:+918467886865">+91 84678 86865</a>
+          <a href="https://wa.me/919004390564" target="_blank" rel="noopener">WhatsApp: +91 90043 90564</a>
+          <a href="mailto:radigitalwork0@gmail.com">radigitalwork0@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; <span id="footerYear"></span> RA Studio. All rights reserved.</p>
+      <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        Back to top
+      </button>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ============================================================
+     LOGO — single base64 source applied to every logo slot
+     ============================================================ */
+  var LOGO_SRC = "data:image/jpeg;base64,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";
+  document.querySelectorAll('[data-logo-slot]').forEach(function (img) {
+    img.src = LOGO_SRC;
+  });
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ============================================================
+     STICKY HEADER SCROLL STATE
+     ============================================================ */
+  var header = document.getElementById('siteHeader');
+  function updateHeaderState() {
+    if (window.scrollY > 12) header.classList.add('is-scrolled');
+    else header.classList.remove('is-scrolled');
+  }
+  updateHeaderState();
+  window.addEventListener('scroll', updateHeaderState, { passive: true });
+
+  /* ============================================================
+     MOBILE NAVIGATION TOGGLE
+     ============================================================ */
+  var menuToggle = document.getElementById('menuToggle');
+  var mobileNav = document.getElementById('mobileNav');
+
+  function openMenu() {
+    mobileNav.classList.add('is-open');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    mobileNav.classList.remove('is-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  menuToggle.addEventListener('click', function () {
+    var isOpen = mobileNav.classList.contains('is-open');
+    if (isOpen) closeMenu(); else openMenu();
+  });
+  document.querySelectorAll('[data-mobile-link]').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  /* ============================================================
+     SMOOTH INTERNAL NAVIGATION (with reduced-motion respect)
+     ============================================================ */
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var targetId = link.getAttribute('href');
+      if (targetId.length < 2) return;
+      var target = document.querySelector(targetId);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      try {
+        history.pushState(null, '', targetId);
+      } catch (err) {
+        /* pushState can be blocked in sandboxed preview frames (e.g. srcdoc) */
+      }
+    });
+  });
+
+  /* ============================================================
+     PLAIN BUTTON SCROLL TRIGGERS (no href / no link navigation)
+     ============================================================ */
+  document.querySelectorAll('[data-scroll-target]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var target = document.querySelector(btn.getAttribute('data-scroll-target'));
+      if (!target) return;
+      target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    });
+  });
+
+  /* ============================================================
+     SCROLL-REVEAL ANIMATIONS (IntersectionObserver)
+     ============================================================ */
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    var revealObserver = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    revealEls.forEach(function (el) { revealObserver.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  /* ============================================================
+     ACCESSIBLE FAQ ACCORDION
+     ============================================================ */
+  document.querySelectorAll('.faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var expanded = btn.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('.faq-question').forEach(function (other) {
+        other.setAttribute('aria-expanded', 'false');
+      });
+      btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    });
+  });
+
+  /* ============================================================
+     CIRCUIT-SPINE SCROLL PROGRESS + ACTIVE NAV LINK
+     ============================================================ */
+  var spineFill = document.getElementById('spineFill');
+  var navLinks = document.querySelectorAll('[data-nav-link]');
+  var sections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
+  var nodes = document.querySelectorAll('[data-node]');
+
+  function updateScrollProgress() {
+    var doc = document.documentElement;
+    var scrollTop = window.scrollY || doc.scrollTop;
+    var scrollHeight = doc.scrollHeight - doc.clientHeight;
+    var progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    if (spineFill) spineFill.style.height = progress + '%';
+
+    var nodeCount = nodes.length;
+    nodes.forEach(function (node, i) {
+      var threshold = ((i + 1) / (nodeCount + 1)) * 100;
+      if (progress >= threshold) node.classList.add('is-active');
+      else node.classList.remove('is-active');
+    });
+  }
+  window.addEventListener('scroll', updateScrollProgress, { passive: true });
+  updateScrollProgress();
+
+  function setActiveNav() {
+    var scrollPos = window.scrollY + 140;
+    var currentId = null;
+    sections.forEach(function (section) {
+      if (section.offsetTop <= scrollPos) currentId = section.id;
+    });
+    navLinks.forEach(function (link) {
+      var href = link.getAttribute('href');
+      if (href === '#' + currentId) link.classList.add('is-active');
+      else link.classList.remove('is-active');
+    });
+  }
+  window.addEventListener('scroll', setActiveNav, { passive: true });
+  setActiveNav();
+
+  /* ============================================================
+     BACK-TO-TOP BUTTON
+     ============================================================ */
+  var backToTop = document.getElementById('backToTop');
+  backToTop.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+  });
+
+  /* ============================================================
+     DYNAMIC FOOTER YEAR
+     ============================================================ */
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+})();
+</script>
+</body>
+</html>
